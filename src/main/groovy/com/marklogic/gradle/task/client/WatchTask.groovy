@@ -82,11 +82,22 @@ class WatchTask extends MarkLogicTask {
 					onModulesLoaded.accept(loadedModules)
 				}
 			}
+
+			afterModulesLoaded()
+
 			try {
 				Thread.sleep(sleepTime);
 			} catch (InterruptedException ie) {
 				// Ignore
 			}
 		}
+	}
+
+	/**
+	 * This has been added so that the HubWatchTask in Data Hub Framework can call its custom code for loading
+	 * modules from the plugins directory.
+	 */
+	void afterModulesLoaded() {
+
 	}
 }
